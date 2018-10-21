@@ -104,7 +104,6 @@ def nicefy(potSize,bucketSizeList,bucketPrizeList):
 
 def allocateExcessFunds(potSize,excess,bucketSizeList,bucketPrizeList):
     n=len(bucketSizeList)
-    print(excess)
     for i in range(n-1):
         if bucketPrizeList[i]==bucketPrizeList[i+1]:
             incrementer=((bucketPrizeList[i+1]+bucketPrizeList[i-1])/2-bucketPrizeList[i])*bucketSizeList[i]
@@ -117,14 +116,12 @@ def allocateExcessFunds(potSize,excess,bucketSizeList,bucketPrizeList):
             if bucketSizeList[i]!=1:
                 index=i
                 break
-        print(excess)
         bucketPrizeList[index-1]+=excess
         if bucketPrizeList[index-1]%10==0:
             bucketPrizeList[index-1]=int(bucketPrizeList[index-1])
         for i in range(index-1,0,-1):
             if bucketPrizeList[i]>bucketPrizeList[i-1]:
                 bucketPrizeList[i],bucketPrizeList[i-1]=bucketPrizeList[i-1],bucketPrizeList[i]
-            print(bucketPrizeList)
     return bucketPrizeList
 
 def heuristicSolution(potSize,entryFee,P1,N,r_max):
